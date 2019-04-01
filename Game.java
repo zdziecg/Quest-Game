@@ -16,8 +16,14 @@ public class Game {
             String word = words [random.nextInt (words.length)];
             String hashWord =word;
 
-            char randomChar= hashWord.charAt(random.nextInt(hashWord.length()));
-            hashWord = hashWord.replaceFirst(String.valueOf(randomChar), "*");
+            for (int i=0; i <round; i+=5) {
+                char randomChar = hashWord.charAt(random.nextInt(hashWord.length()));
+                if (randomChar == '*') {
+                    i--;
+                    continue;
+                }
+                hashWord = hashWord.replaceFirst(String.valueOf(randomChar), "*");
+            }
 
             System.out.println("Twoje wylosowane słowo; " + hashWord);
                     System.out.print("Wprowadź słowo:");
@@ -32,8 +38,5 @@ public class Game {
                      }
         }
         System.out.println("Koniec gry! Twoje punkty:" + round);
-
     }
-
-
 }
